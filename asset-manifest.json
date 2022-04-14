@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/dormitory-app/static/css/main.e038c177.css",
-    "main.js": "/dormitory-app/static/js/main.aa3ca006.js",
+    "main.js": "/dormitory-app/static/js/main.c5ea1bc8.js",
     "static/media/bntu-en.png": "/dormitory-app/static/media/bntu-en.b271151f5984ac77891e.png",
     "static/media/bntu-ru.png": "/dormitory-app/static/media/bntu-ru.3ef186514de33243ef09.png",
     "static/media/503.png": "/dormitory-app/static/media/503.3f8b7a1db42b7f171dd8.png",
@@ -9,10 +9,10 @@
     "index.html": "/dormitory-app/index.html",
     "static/media/getFetch.cjs": "/dormitory-app/static/media/getFetch.c780682470504fffbd04.cjs",
     "main.e038c177.css.map": "/dormitory-app/static/css/main.e038c177.css.map",
-    "main.aa3ca006.js.map": "/dormitory-app/static/js/main.aa3ca006.js.map"
+    "main.c5ea1bc8.js.map": "/dormitory-app/static/js/main.c5ea1bc8.js.map"
   },
   "entrypoints": [
     "static/css/main.e038c177.css",
-    "static/js/main.aa3ca006.js"
+    "static/js/main.c5ea1bc8.js"
   ]
 }
