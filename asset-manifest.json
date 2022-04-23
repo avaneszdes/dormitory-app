@@ -1,18 +1,18 @@
 {
   "files": {
-    "main.css": "/static/css/main.e038c177.css",
-    "main.js": "/static/js/main.88cbac90.js",
-    "static/media/bntu-en.png": "/static/media/bntu-en.b271151f5984ac77891e.png",
-    "static/media/bntu-ru.png": "/static/media/bntu-ru.3ef186514de33243ef09.png",
-    "static/media/503.png": "/static/media/503.3f8b7a1db42b7f171dd8.png",
-    "static/media/LogoBntu2.png": "/static/media/LogoBntu2.d7fe680a1f7afa844221.png",
-    "index.html": "/index.html",
-    "static/media/getFetch.cjs": "/static/media/getFetch.c780682470504fffbd04.cjs",
-    "main.e038c177.css.map": "/static/css/main.e038c177.css.map",
-    "main.88cbac90.js.map": "/static/js/main.88cbac90.js.map"
+    "main.css": "/dormitory-app/static/css/main.e038c177.css",
+    "main.js": "/dormitory-app/static/js/main.13679fcb.js",
+    "static/media/bntu-en.png": "/dormitory-app/static/media/bntu-en.b271151f5984ac77891e.png",
+    "static/media/bntu-ru.png": "/dormitory-app/static/media/bntu-ru.3ef186514de33243ef09.png",
+    "static/media/503.png": "/dormitory-app/static/media/503.3f8b7a1db42b7f171dd8.png",
+    "static/media/LogoBntu2.png": "/dormitory-app/static/media/LogoBntu2.d7fe680a1f7afa844221.png",
+    "index.html": "/dormitory-app/index.html",
+    "static/media/getFetch.cjs": "/dormitory-app/static/media/getFetch.c780682470504fffbd04.cjs",
+    "main.e038c177.css.map": "/dormitory-app/static/css/main.e038c177.css.map",
+    "main.13679fcb.js.map": "/dormitory-app/static/js/main.13679fcb.js.map"
   },
   "entrypoints": [
     "static/css/main.e038c177.css",
-    "static/js/main.88cbac90.js"
+    "static/js/main.13679fcb.js"
   ]
 }
