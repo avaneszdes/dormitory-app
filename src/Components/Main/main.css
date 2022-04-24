@@ -1,0 +1,27 @@
+h5 {
+    cursor: pointer;
+    color: rgba(0, 0, 0, 0.87);
+    font-size: 0.875rem;
+    font-weight: 500;
+    line-height: 1.75;
+    margin: 0 0 0 10px;
+    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+}
+
+h5:after {
+    display: block;
+    content: '';
+    border-bottom: solid 3px green;
+    transform: scaleX(0);
+    transition: transform 250ms ease-in-out;
+}
+
+h5:hover:after {
+    transform: scaleX(1);
+    border-bottom: solid 3px #80ba80;
+}
+
+/*h5.fromRight:after{ transform-origin:100% 50%; }*/
+h5.fromLeft:after {
+    transform-origin: 0% 30%;
+}

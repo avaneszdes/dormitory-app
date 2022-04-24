@@ -1,0 +1,19 @@
+
+/* Works on Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+    width: 0px;
+}
+
+*::-webkit-scrollbar-track {
+    background: white;
+}
+
+*::-webkit-scrollbar-thumb {
+    border-radius: 20px;
+    background-color: white;
+    border: 2px solid white;
+}
+
+.scrollable-element {
+    scrollbar-color: red yellow; /* red is for the thumb and yellow is for the track */
+}
