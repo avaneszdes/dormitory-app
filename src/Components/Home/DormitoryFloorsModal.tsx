@@ -117,6 +117,7 @@ export default function DormitoryFloorsModal({props, setProps}: Props) {
     };
 
     const getUserByLogin = (login: string) => {
+        console.log('error1')
         dispatch({type: GET_STUDENT_PROFILE_BY_LOGIN, payload: login})
     }
 

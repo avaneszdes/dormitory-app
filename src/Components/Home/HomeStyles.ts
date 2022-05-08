@@ -34,6 +34,12 @@ export const useCarouselStyles = makeStyles(() => ({
         padding: '10px 0px 0px 25px',
         maxWidth: '865px',
     },
+    dormitoryLocationText: {
+        display: "grid",
+        gridTemplateColumns: '70px 1fr',
+        gridRowGap: '24px',
+        gridColumnGap: '16px'
+    },
     textWithLine: {
         maxWidth: '825px',
         display: 'flex',

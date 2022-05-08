@@ -26,3 +26,23 @@ export function getErrorInformation(error: any){
 
     return error?.response?.data?.status + ' ' + error?.response?.data?.status?.error + '\t' + error?.response?.data?.status?.timestamp
 }
+
+
+export const getRole = (role: string): string => {
+    const lang = lng()
+    if(role === 'Student' &&  lang === 'ru'){
+        return 'СТУДЕНТ'
+    }else if(role === 'Student' &&  lang === 'en'){
+        return 'STUDENT'
+    }else if(role === 'Administrator' &&  lang === 'ru'){
+        return 'АДМИНИСТРАТОР'
+    }else if(role === 'Administrator' &&  lang === 'en'){
+        return 'ADMINISTRATOR'
+    }else if(role === 'Accountant' &&  lang === 'ru'){
+        return 'БУХГАЛТЕР'
+    }else if(role === 'Accountant' &&  lang === 'en'){
+        return 'ACCOUNTANT'
+    }
+
+    return ''
+}

@@ -10,7 +10,6 @@ import jwt_decode, {JwtPayload} from "jwt-decode";
 import history from '../../Components/history'
 import constants from '../../Constants/Constants'
 import {Alert} from "../Utils/SetAlert";
-import {act} from "react-dom/test-utils";
 import {getErrorInformation} from "../../Components/Global";
 
 export interface ResponseJwt extends JwtPayload {

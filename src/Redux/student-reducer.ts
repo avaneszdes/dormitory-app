@@ -7,7 +7,6 @@ import {
     CREATE_REPRIMAND_SUCCEED,
     DELETE_REPRIMAND_SUCCEED,
     DELETE_STUDENT,
-    DELETE_STUDENT_FROM_ROOM,
     EDIT_USER_SUCCEED,
     GET_ALL_STUDENTS_SUCCEED,
     GET_DEBTS_BY_ID_SUCCEED,
@@ -53,8 +52,8 @@ const student = (state = initialState, action: DormitoryActionTypes) => {
         case DELETE_STUDENT:
             return {...state, students: state.students.filter(x => x.id !== action.payload)}
 
-        case DELETE_STUDENT_FROM_ROOM:
-            return {...state, students: state.students.filter(x => x.login !== action.payload.userLogin)}
+        // case DELETE_STUDENT_FROM_ROOM:
+        //     return {...state, students: state.students.filter(x => x.login !== action.payload.userLogin)}
 
         case ADD_USER:
             return {...state, user: action.payload.user}

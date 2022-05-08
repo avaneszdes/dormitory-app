@@ -10,6 +10,9 @@ export const useColumnStyles = makeStyles((theme) => ({
     header: {
         margin: '3px'
     },
+    button: {
+        margin: '3px',
+    }
 }));
 
 export const useDetailedInfoStyles = makeStyles(() => ({

@@ -1,11 +1,12 @@
 import {Button, Dialog, DialogActions, DialogContent, DialogTitle, Slide, TextField} from '@mui/material';
 import {TransitionProps} from '@mui/material/transitions';
 import {useFormik} from 'formik';
-import React from 'react';
+import React, {useState} from 'react';
 import {useDispatch} from 'react-redux';
 import {ADD_DORMITORY} from '../../Redux/constants';
 import * as yup from 'yup'
 import {useTranslation} from "react-i18next";
+import CheckIcon from "@mui/icons-material/Check";
 
 const Transition = React.forwardRef(function Transition(
     props: TransitionProps & {
@@ -23,22 +24,28 @@ interface Props {
 
 const vScheme = yup.object().shape({
     dormitoryNumber: yup.number().required("Required"),
-    dormitoryQuantity: yup.number().required("Required"),
-    dormitoryAddress: yup.string().required("Required"),
+    dormitoryFloorsQuantity: yup.number().required("Required"),
+    dormitoryCity: yup.string().required("Required"),
+    dormitoryStreet: yup.string().required("Required"),
+    dormitoryStreetNumber: yup.string().required("Required"),
 })
 
 export default function AddDormitoryDialog(props: Props) {
 
     const dispatch = useDispatch()
     const {t} = useTranslation();
+    const [image, setImage] = useState('')
 
     const handleClose = () => {
         props.setShowAddDormitory(false)
     }
+
     const val = {
         dormitoryNumber: 0,
-        dormitoryQuantity: 0,
-        dormitoryAddress: '',
+        dormitoryFloorsQuantity: 0,
+        dormitoryCity: '',
+        dormitoryStreet: '',
+        dormitoryStreetNumber: '',
         photo: '',
         coordinates: '53.923249,27.594045',
     }
@@ -50,16 +57,18 @@ export default function AddDormitoryDialog(props: Props) {
 
             const dormitoryRequest = {
                 number: values.dormitoryNumber,
-                quantityFloors: values.dormitoryQuantity,
-                address: values.dormitoryAddress,
-                photo: formik.values.photo,
+                quantityFloors: values.dormitoryFloorsQuantity,
+                dormitoryAddress: values.dormitoryCity + ',' + values.dormitoryStreet + ',' + values.dormitoryStreetNumber,
+                photo: image,
                 mapImage: formik.values.coordinates
             }
 
             dispatch({type: ADD_DORMITORY, payload: dormitoryRequest})
             formik.values.dormitoryNumber = 0
-            formik.values.dormitoryQuantity = 0
-            formik.values.dormitoryAddress = ''
+            formik.values.dormitoryFloorsQuantity = 0
+            formik.values.dormitoryCity = ''
+            formik.values.dormitoryStreet = ''
+            formik.values.dormitoryStreetNumber = ''
             props.setShowAddDormitory(false)
         }
     })
@@ -70,12 +79,13 @@ export default function AddDormitoryDialog(props: Props) {
             return;
         }
 
-        const reader = new FileReader();
 
-        reader.onload = (e: any) => formik.values.photo = e.target.result
+        const reader = new FileReader();
+        reader.onload = (e: any) => {
+            setImage(e.target.result)
+        }
         reader.readAsDataURL(target.target.files[0])
     }
-
 
     return <Dialog TransitionComponent={Transition}
                    keepMounted
@@ -102,34 +112,64 @@ export default function AddDormitoryDialog(props: Props) {
                 <TextField
                     placeholder={t('admin.floorsQuantity')}
                     label={t('admin.floorsQuantity')}
-                    name='dormitoryQuantity'
-                    id='dormitoryQuantity'
+                    name='dormitoryFloorsQuantity'
+                    id='dormitoryFloorsQuantity'
                     style={{width: '400px'}}
                     onChange={formik.handleChange}
-                    error={formik.touched.dormitoryQuantity && Boolean(formik.errors.dormitoryQuantity)}
-                    value={formik.values.dormitoryQuantity}
-                    helperText={formik.touched.dormitoryQuantity && formik.errors.dormitoryQuantity}
+                    error={formik.touched.dormitoryFloorsQuantity && Boolean(formik.errors.dormitoryFloorsQuantity)}
+                    value={formik.values.dormitoryFloorsQuantity}
+                    helperText={formik.touched.dormitoryFloorsQuantity && formik.errors.dormitoryFloorsQuantity}
                 />
 
             </DialogContent>
             <DialogContent>
                 <TextField
-                    placeholder={t('admin.dormitoryAddress')}
-                    label= {t('admin.dormitoryAddress')}
-                    name='dormitoryAddress'
-                    id='dormitoryAddress'
+                    placeholder={t('admin.dormitoryCity')}
+                    label={t('admin.dormitoryCity')}
+                    name='dormitoryCity'
+                    id='dormitoryCity'
                     style={{width: '400px'}}
                     onChange={formik.handleChange}
-                    error={formik.touched.dormitoryAddress && Boolean(formik.errors.dormitoryAddress)}
-                    value={formik.values.dormitoryAddress}
-                    helperText={formik.touched.dormitoryAddress && formik.errors.dormitoryAddress}
+                    error={formik.touched.dormitoryCity && Boolean(formik.errors.dormitoryCity)}
+                    value={formik.values.dormitoryCity}
+                    helperText={formik.touched.dormitoryCity && formik.errors.dormitoryCity}
                 />
 
             </DialogContent>
+
+            <DialogContent>
+                <TextField
+                    placeholder={t('admin.dormitoryStreet')}
+                    label={t('admin.dormitoryStreet')}
+                    name='dormitoryStreet'
+                    id='dormitoryStreet'
+                    style={{width: '400px'}}
+                    onChange={formik.handleChange}
+                    error={formik.touched.dormitoryStreet && Boolean(formik.errors.dormitoryStreet)}
+                    value={formik.values.dormitoryStreet}
+                    helperText={formik.touched.dormitoryStreet && formik.errors.dormitoryStreet}
+                />
+            </DialogContent>
+
+            <DialogContent>
+                <TextField
+                    placeholder={t('admin.dormitoryStreetNumber')}
+                    label={t('admin.dormitoryStreetNumber')}
+                    name='dormitoryStreetNumber'
+                    id='dormitoryStreetNumber'
+                    style={{width: '400px'}}
+                    onChange={formik.handleChange}
+                    error={formik.touched.dormitoryStreetNumber && Boolean(formik.errors.dormitoryStreetNumber)}
+                    value={formik.values.dormitoryStreetNumber}
+                    helperText={formik.touched.dormitoryStreetNumber && formik.errors.dormitoryStreetNumber}
+                />
+
+            </DialogContent>
+
             <DialogContent>
                 <TextField
                     placeholder={t('admin.dorLocation' + ' 53.923249,53.923249')}
-                    label= {t('admin.dorLocation')}
+                    label={t('admin.dorLocation')}
                     name='coordinates'
                     id='coordinates'
                     style={{width: '400px'}}
@@ -150,6 +190,7 @@ export default function AddDormitoryDialog(props: Props) {
                             type="file"
                         />
                     </label>
+                    {image !== '' && <CheckIcon color={'success'} style={{marginLeft: '20px'}}/>}
                 </div>
             </DialogContent>
             <DialogActions>

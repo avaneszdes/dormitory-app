@@ -18,8 +18,8 @@ export default function YandexMap({isBig, location, withControls}: Props) {
 
     const locations = location ?
         {
-            x: Number.parseInt(location.split(',')[0]),
-            y: Number.parseInt(location.split(',')[1])
+            x: Number.parseFloat(location.split(',')[0]),
+            y: Number.parseFloat(location.split(',')[1])
         }
         :
         {

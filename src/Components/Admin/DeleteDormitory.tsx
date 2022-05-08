@@ -42,12 +42,12 @@ export default function DeleteDormitoryDialog(props: Props) {
                    aria-labelledby="form-title"
     >
         <DialogTitle id="form-title">{t('admin.deleting')}</DialogTitle>
-        <DialogContent>
+        <DialogContent style={{marginTop: '20px'}}>
             <TextField
                 placeholder={t('admin.dormitoryNumber')}
                 label={t('admin.dormitoryNumber')}
                 name='dormitoryNumber'
-                style={{width: '400px'}}
+                style={{width: '400px', marginTop: '20px'}}
                 onChange={handleNumberChange}
 
             />

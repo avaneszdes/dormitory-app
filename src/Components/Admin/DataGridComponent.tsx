@@ -21,15 +21,17 @@ export default function DataGridComponent() {
 
     const tokenLife = auth.exp !== undefined ? auth.exp * 1000 : 0;
     const language = lng()
-    const dataGridLocales = language === 'ru' ? ruRU.components.MuiDataGrid.defaultProps.localeText : language === 'en'
-        ? enUS.components.MuiDataGrid.defaultProps.localeText : zhCN.components.MuiDataGrid.defaultProps.localeText
+    const dataGridLocales = language === 'ru' ? ruRU.components.MuiDataGrid.defaultProps.localeText
+        : language === 'en'
+        ? enUS.components.MuiDataGrid.defaultProps.localeText
+            : zhCN.components.MuiDataGrid.defaultProps.localeText
+
     useEffect(() => {
         if (Date.now() > tokenLife || tokenLife === 0) {
             localStorage.setItem('token', '')
             dispatch({type: LOG_OUT, payload: ''})
         }
     }, []);
-
 
     return (
         <div style={{width: '99%', marginLeft: '10px'}}>

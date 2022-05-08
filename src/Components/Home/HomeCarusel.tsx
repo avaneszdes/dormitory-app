@@ -59,6 +59,7 @@ export default function HomeCarousel(props: Props) {
         return a + b;
     });
 
+
     return <>
         {dormitories.dormitories &&
         <Container maxWidth="xl" component="main" style={{backgroundColor: '#ecebeb', margin: '0px'}}>
@@ -106,12 +107,24 @@ export default function HomeCarousel(props: Props) {
 
                                 {dormitory.address &&
                                 <div className={classes.caruselBlockText}>
-                                    <Typography variant="h6" color="textPrimary">
-                                        {dormitory.address.split(',')[1]}
-                                    </Typography>
-                                    <Typography variant="h6" color="textPrimary">
-                                        {dormitory.address.split(',')[0]}
-                                    </Typography>
+
+                                    <div style={{display: 'flex'}}>
+
+                                        <Typography  variant="h6" color="textPrimary">
+                                            {t('home.dormitoryAddress')}
+                                        </Typography>
+
+                                        <Typography style={{marginLeft: '8px'}} variant="h6" color="textPrimary">
+                                            {dormitory.address.split(',')[0]},
+                                        </Typography>
+                                        <Typography style={{marginLeft: '4px'}} variant="h6" color="textPrimary">
+                                            {dormitory.address.split(',')[1]}
+                                        </Typography>
+                                        <Typography style={{marginLeft: '4px'}} variant="h6" color="textPrimary">
+                                            {dormitory.address.split(',')[2]}
+                                        </Typography>
+                                    </div>
+
                                     {Boolean(dormitory.rooms.length) &&
                                     <div style={{marginBottom: "30px"}}>
 
@@ -151,11 +164,11 @@ export default function HomeCarousel(props: Props) {
                 </Typography>
                 <div className={classes.caruselButtonsIn}>
                     <div className={classes.caruselButtonsIn} onClick={() => getDormitories(false)}>
-                        <LeftIcon className={classes.leftRightButton}/>
+                        <LeftIcon fontSize={'large'} className={classes.leftRightButton}/>
                     </div>
                     {dormitories.dormitories.length} / {nextOrPrev}
                     <div className={classes.caruselButtonsIn} onClick={() => getDormitories(true)}>
-                        <RightIcon className={classes.leftRightButton}/>
+                        <RightIcon fontSize={'large'} className={classes.leftRightButton}/>
                     </div>
                 </div>
             </div>

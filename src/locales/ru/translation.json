@@ -61,7 +61,11 @@
     "dormitoryNumber": "Общежитие № ",
     "free": "Свободно",
     "from": "из",
-    "places": "мест"
+    "places": "мест",
+    "city": "Город: ",
+    "street": "Улица: ",
+    "streetNumber": "Здание: ",
+    "dormitoryAddress": "Адрес:"
   },
   "payments": {
     "paymentsByYear": "Оплаты по годам",
@@ -111,6 +115,9 @@
     "dormitoryMapPhoto": "Добавить фото общежития на карте",
     "updateDormitoryPhoto": "Обновить фото общежития",
     "updateDormitoryMapPhoto": "Обновить фото общежития на карте",
+    "dormitoryCity": "Город",
+    "dormitoryStreet": "Улица",
+    "dormitoryStreetNumber": "Номер здания",
     "updatingDormitory": "Обновление информации об общежитии ",
     "dormitoryAddress": "Адрес общежития",
     "floorsQuantity": "Количество этажей",

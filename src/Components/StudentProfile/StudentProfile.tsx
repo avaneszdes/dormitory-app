@@ -27,7 +27,7 @@ import {TransitionProps} from "@material-ui/core/transitions";
 import AlertComponent from "../Alerts/SuccessAlert";
 import {useFormik} from "formik";
 import {useTranslation} from "react-i18next";
-import {getFullDate, regexes} from "../Global";
+import {getFullDate, getRole, regexes} from "../Global";
 import * as yup from 'yup'
 import {Box} from "@mui/material";
 
@@ -75,14 +75,18 @@ export default function StudentProfile() {
     const auth = useSelector((rootState: IRootState) => rootState.auth)
     const occupancy = useSelector((rootState: IRootState) => rootState.occupancy.occupancy)
     const {t} = useTranslation();
-
+    const profile = useSelector((profile: IRootState) => profile.student.profile)
 
     useEffect(() => {
         dispatch({type: GET_STUDENT_PROFILE_BY_ID, payload: auth.id})
-        dispatch({type: GET_OCCUPANCY_DATA_BY_LOGIN, payload: auth.login})
+
+        if(auth.role === 'ROLE_STUDENT'){
+            dispatch({type: GET_OCCUPANCY_DATA_BY_LOGIN, payload: auth.login})
+        }
+
     }, []);
 
-    const profile = useSelector((profile: IRootState) => profile.student.profile)
+
 
     const val = {
         phone: '',
@@ -150,7 +154,7 @@ export default function StudentProfile() {
         }} >
             <div className={classes.main}>
                 <Typography variant="h5" component="h2" style={{margin: '10px'}}>
-                    {role}
+                    {getRole(role)}
                 </Typography>
                 <div className={classes.avatarBlock}>
                     <StyledBadge

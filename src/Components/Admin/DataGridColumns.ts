@@ -73,6 +73,16 @@ export default function DataGridColumns(): GridColDef[]{
             headerClassName: classes.header,
         },
         {
+            field: 'isForeign',
+            headerName: t('admin.isForeigner'),
+            width: 120,
+            editable: false,
+            headerAlign: 'center',
+            align: 'center',
+            cellClassName: classes.cell,
+            headerClassName: classes.header,
+        },
+        {
             field: 'deleteRow',
             headerName: t('admin.delete'),
             renderCell: DeleteButton,
@@ -80,7 +90,9 @@ export default function DataGridColumns(): GridColDef[]{
             align: 'center',
             width: 130,
             disableColumnMenu: true,
-            sortable: false
+            sortable: false,
+            cellClassName: classes.button,
+            headerClassName: classes.header,
 
         },
         {
@@ -91,7 +103,9 @@ export default function DataGridColumns(): GridColDef[]{
             align: 'center',
             renderCell: PaymentButton,
             disableColumnMenu: true,
-            sortable: false
+            sortable: false,
+            cellClassName: classes.button,
+            headerClassName: classes.header,
         },
         {
             field: 'info',
@@ -101,7 +115,9 @@ export default function DataGridColumns(): GridColDef[]{
             align: 'center',
             renderCell: DetailedInfoBtn,
             disableColumnMenu: true,
-            sortable: false
+            sortable: false,
+            cellClassName: classes.button,
+            headerClassName: classes.header,
         },
     ];
 }

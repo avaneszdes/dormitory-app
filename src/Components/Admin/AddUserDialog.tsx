@@ -8,7 +8,7 @@ import * as yup from 'yup'
 import {useTranslation} from "react-i18next";
 import {IUserInterface} from "../../Interfaces";
 import {Menu, MenuItem} from "@material-ui/core";
-import {lng, regexes} from "../Global";
+import {getRole, regexes} from "../Global";
 
 const Transition = React.forwardRef(function Transition(
     props: TransitionProps & {
@@ -93,24 +93,7 @@ export default function AddUserDialog(props: Props) {
     })
 
 
-    const getRole = (role: string): string => {
-        const lang = lng()
-        if(role === 'student' &&  lang === 'ru'){
-            return 'СТУДЕНТ'
-        }else if(role === 'student' &&  lang === 'en'){
-            return 'STUDENT'
-        }else if(role === 'admin' &&  lang === 'ru'){
-            return 'АДМИНИСТРАТОР'
-        }else if(role === 'admin' &&  lang === 'en'){
-            return 'ADMINISTRATOR'
-        }else if(role === 'accountant' &&  lang === 'ru'){
-            return 'БУХГАЛТЕР'
-        }else if(role === 'accountant' &&  lang === 'en'){
-            return 'ACCOUNTANT'
-        }
 
-        return ''
-    }
 
 
     return <Dialog TransitionComponent={Transition}
@@ -247,7 +230,7 @@ export default function AddUserDialog(props: Props) {
 
                 <div>
                     <Button
-                        id="basic-button"
+                        id="button"
                         aria-controls={roleAnchorEl ? 'basic-menu' : undefined}
                         aria-haspopup="true"
                         variant={"outlined"}
@@ -266,9 +249,9 @@ export default function AddUserDialog(props: Props) {
                             'aria-labelledby': 'basic-button',
                         }}
                     >
-                        <MenuItem onClick={() => handleRoleClose('student')}>{getRole('student')}</MenuItem>
-                        <MenuItem onClick={() => handleRoleClose('accountant')}>{getRole('accountant')}</MenuItem>
-                        <MenuItem onClick={() => handleRoleClose('administrator')}>{getRole('admin')}</MenuItem>
+                        <MenuItem onClick={() => handleRoleClose('Student')}>{getRole('Student')}</MenuItem>
+                        <MenuItem onClick={() => handleRoleClose('Accountant')}>{getRole('Accountant')}</MenuItem>
+                        <MenuItem onClick={() => handleRoleClose('Administrator')}>{getRole('Administrator')}</MenuItem>
                     </Menu>
                 </div>
 

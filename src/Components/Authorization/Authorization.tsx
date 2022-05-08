@@ -1,7 +1,6 @@
 import React, {useState} from 'react';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
-import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
 import Link from '@material-ui/core/Link';
 import Grid from '@material-ui/core/Grid';
@@ -109,8 +108,7 @@ export default function SignIn() {
                         name={t('authorization.password')}
                         label={t('authorization.labelPassword')}
                         type="password"
-                        id="password"
-                        autoComplete="current-password"
+                        autoComplete={"current-password"}
                         onChange={formik.handleChange}
                         error={formik.touched.password && Boolean(formik.errors.password)}
                         value={formik.values.password}
@@ -134,7 +132,6 @@ export default function SignIn() {
                         </Grid>
                     </Grid>
                 </form>
-                {/*<SimpleBackdrop hidden={loading}/>*/}
             </div>
         </Container>
 

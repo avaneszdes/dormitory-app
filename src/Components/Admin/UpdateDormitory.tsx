@@ -4,7 +4,9 @@ import {
     DialogActions,
     DialogContent,
     DialogTitle,
-    IconButton, InputAdornment, OutlinedInput,
+    IconButton,
+    InputAdornment,
+    OutlinedInput,
     Slide,
     TextField
 } from '@mui/material';
@@ -17,6 +19,7 @@ import * as yup from 'yup'
 import {useTranslation} from "react-i18next";
 import FindReplaceIcon from '@mui/icons-material/FindReplace';
 import {IRootState} from "../../Redux/configureStore";
+import CheckIcon from '@mui/icons-material/Check';
 
 const Transition = React.forwardRef(function Transition(
     props: TransitionProps & {
@@ -69,7 +72,7 @@ export default function UpdateDormitoryDialog(props: Props) {
                 number: values.dormitoryNumber ?? val.dormitoryNumber,
                 quantityFloors: values.dormitoryQuantity ?? val.dormitoryQuantity,
                 address: values.dormitoryAddress ?? val.dormitoryAddress,
-                photo: photos?.photo === '' ? dormitory?.photo : photos?.photo ,
+                photo: photos?.photo === '' ? dormitory?.photo : photos?.photo,
                 mapImage: values.coordinates ?? val.coordinates
             }
 
@@ -105,7 +108,7 @@ export default function UpdateDormitoryDialog(props: Props) {
                    aria-labelledby="form-title"
     >
         <DialogTitle id="form-title">{t('admin.updatingDormitory')}</DialogTitle>
-        <DialogContent >
+        <DialogContent>
             <OutlinedInput
                 placeholder={t('admin.dormitoryNumber')}
                 value={dormitoryNumber}
@@ -169,7 +172,7 @@ export default function UpdateDormitoryDialog(props: Props) {
             <DialogContent>
                 <TextField
                     placeholder={t('admin.dorLocation' + ' 53.923249,53.923249')}
-                    label= {t('admin.dorLocation')}
+                    label={t('admin.dorLocation')}
                     name='coordinates'
                     id='coordinates'
                     style={{width: '400px'}}
@@ -192,6 +195,7 @@ export default function UpdateDormitoryDialog(props: Props) {
                             type="file"
                         />
                     </label>
+                    {photos.photo !== '' && <CheckIcon color={'success'} style={{marginLeft: '20px'}}/>}
                 </div>
 
             </DialogContent>

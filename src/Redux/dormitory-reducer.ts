@@ -3,7 +3,7 @@ import {
     ADD_ROOM_TO_DORMITORY_SUCCEED,
     ADD_STUDENT_TO_ROOM_SUCCEED,
     DELETE_DORMITORY_SUCCEED,
-    DELETE_ROOM_FROM_DORMITORY_SUCCEED, DELETE_STUDENT_FROM_ROOM,
+    DELETE_ROOM_FROM_DORMITORY_SUCCEED, DELETE_STUDENT_FROM_ROOM_SUCCEED,
     GET_ALL_DORMITORIES_SUCCEED,
     GET_DORMITORY_BY_NUMBER_SUCCEED,
     UPDATE_DORMITORY_SUCCEED,
@@ -86,7 +86,7 @@ const dormitories = (state = initialState, action: DormitoryActionTypes) => {
                 })
             }
 
-        case DELETE_STUDENT_FROM_ROOM:
+        case DELETE_STUDENT_FROM_ROOM_SUCCEED:
             return {
                 ...state,
                 dormitories: state.dormitories.map((dormitory: IDormitoryInterface) => {

@@ -79,7 +79,7 @@ import {
     GET_ALL_OCCUPANCIES,
     GET_ALL_OCCUPANCIES_SUCCEED,
     DELETE_REPRIMAND,
-    DELETE_REPRIMAND_SUCCEED, GET_DEBTS_BY_ID, GET_DEBTS_BY_ID_SUCCEED
+    DELETE_REPRIMAND_SUCCEED, GET_DEBTS_BY_ID, GET_DEBTS_BY_ID_SUCCEED, CLEAR_OCCUPANCY_SUCCEED
 } from "./constants";
 
 
@@ -332,7 +332,7 @@ export interface DeleteStudentFromRoom {
 
 export interface DeleteStudentFromRoomSucceed {
     type: typeof DELETE_STUDENT_FROM_ROOM_SUCCEED,
-    payload: string
+    payload: {dormitoryId: number, roomId: number}
 }
 
 export interface ChangePrice {
@@ -435,7 +435,13 @@ export interface GetDebtsByIdSucceed {
     payload: IDebtsInterface
 }
 
+export interface ClearOccupancySucceed {
+    type: typeof CLEAR_OCCUPANCY_SUCCEED,
+    payload: null
+}
+
 export type DormitoryActionTypes =
+    ClearOccupancySucceed
     | GetDebtsById
     | GetDebtsByIdSucceed
     | DeleteReprimand

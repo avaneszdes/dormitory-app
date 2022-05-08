@@ -13,13 +13,14 @@ import {Menu, MenuItem} from "@material-ui/core";
 import './main.css'
 import {IRootState} from "../../Redux/configureStore";
 import {useDispatch, useSelector} from "react-redux";
-import {LOG_OUT,} from "../../Redux/constants";
+import {CLEAR_OCCUPANCY_SUCCEED, LOG_OUT,} from "../../Redux/constants";
 import StudentProfileC from "../StudentProfile/StudentProfile";
 import ChangePassword from "../ChangePassword/ChangePassword";
 import AdminPage from "../Admin/AdminPage";
 import logoBntu from '../../images/LogoBntu2.png'
 import PaymentPage from "../PaymentPage/PaymentPage";
 import ErrorPage from "../ErrorPage/ErrorPage";
+import {Divider} from "@mui/material";
 
 const useStyles = makeStyles((theme) => ({
     '@global': {
@@ -99,6 +100,7 @@ export default function Main() {
     const logOut = () => {
         localStorage.removeItem('token');
         dispatch({type: LOG_OUT, payload: ''})
+        dispatch({type: CLEAR_OCCUPANCY_SUCCEED, payload: null})
         history.push("/")
     }
 
@@ -114,13 +116,17 @@ export default function Main() {
                 </div>
 
                 <Toolbar>
-
+                    {!auth.token && <Divider orientation="vertical" flexItem sx={{height: '20px', margin: '20px 0px 0px 10px'}} />}
                     {!auth.token &&
-                    <h5 className="fromLeft" onClick={() => logIn()}>
-                        {t('main.logIn')}
-                    </h5>}
+                        <div>
+                            <h5 className="fromLeft" onClick={() => logIn()}>
+                                {t('main.logIn')}
+                            </h5>
+                        </div>
+                    }
 
 
+                    {auth.token && auth.role === 'ROLE_STUDENT' && <Divider orientation="vertical" flexItem sx={{height: '20px', margin: '20px 0px 0px 10px'}} />}
                     {auth.token && auth.role === 'ROLE_STUDENT' &&
                     <h5 className="fromLeft" onClick={() => toMyPayments()}>
                         {t('main.myPayments')}
@@ -128,23 +134,30 @@ export default function Main() {
                     }
 
 
-                    {auth.token && auth.role === 'ROLE_STUDENT' &&
+                    {auth.token && <Divider orientation="vertical" flexItem sx={{height: '20px', margin: '20px 0px 0px 10px'}} />}
+                    {auth.token &&
                     <h5 className="fromLeft" onClick={() => history.push('/profile')}>
                         {t('main.personalAccount')}
                     </h5>
                     }
 
+                    {auth.token && auth.role === 'ROLE_ADMINISTRATOR' && <Divider orientation="vertical" flexItem sx={{height: '20px', margin: '20px 0px 0px 10px'}} />}
+                    {auth.token && auth.role === 'ROLE_ADMINISTRATOR' &&
+                    <h5 className="fromLeft" onClick={() => history.push('/adminPage')}>
+                        {t('main.admin')}
+                    </h5>
+                    }
+
+                    {auth.token && <Divider orientation="vertical" flexItem sx={{height: '20px', margin: '20px 0px 0px 10px'}} />}
                     {auth.token &&
                     <h5 className="fromLeft" onClick={() => logOut()}>
                         {t('main.logOut')}
                     </h5>
                     }
 
-                    {auth.token && auth.role === 'ROLE_ADMINISTRATOR' &&
-                    <h5 className="fromLeft" onClick={() => history.push('/adminPage')}>
-                        {t('main.admin')}
-                    </h5>
-                    }
+
+
+                    <Divider orientation="vertical" flexItem sx={{height: '20px', margin: '20px 0px 0px 10px'}} />
                     <div>
                         <Button aria-controls="simple-menu" style={{all: 'unset'}}
                                 aria-haspopup="listbox" onClick={handleLanguageClick}>

@@ -64,7 +64,11 @@
     "dormitoryNumber": "Dormitory № ",
     "free": "Free",
     "from": "from",
-    "places": "places"
+    "places": "places",
+    "city": "City",
+    "street": "Street",
+    "streetNumber": "Street number",
+    "dormitoryAddress": "Address:"
   },
   "payments": {
     "paymentsByYear": "Payments by year",
@@ -114,6 +118,9 @@
     "dormitoryMapPhoto": "Add dormitory on map",
     "updateDormitoryPhoto": "Update dormitory photo",
     "updateDormitoryMapPhoto": "Update dormitory on map",
+    "dormitoryCity": "Dormitory city location",
+    "dormitoryStreet": "Dormitory street location",
+    "dormitoryStreetNumber": "Dormitory street number",
     "updatingDormitory": "Updating dormitory",
     "dormitoryAddress": "Dormitory address",
     "floorsQuantity": "Dormitory floors quantity",

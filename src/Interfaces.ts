@@ -135,7 +135,7 @@ export interface IStudentProfileInterface {
     mail: string
     phone: string
     patronymic: string
-    isForeign: boolean
+    isForeign: string | boolean
 }
 
 export interface IUserInterface {

@@ -8,7 +8,7 @@ import httpRequest from "../httpConfig";
 import constants from '../../Constants/Constants'
 import {Alert} from "../Utils/SetAlert";
 import {GetStudentsByDormitory} from "../../Redux/action";
-import {getErrorInformation} from "../../Components/Global";
+import {getErrorInformation, lng} from "../../Components/Global";
 
 function* getStudentsByFilterWorker(action: GetStudentsByDormitory) {
 
@@ -35,7 +35,16 @@ function* getStudentsByFilterWorker(action: GetStudentsByDormitory) {
 
     try {
         const response: AxiosResponse = yield call(() => httpRequest(request));
-        yield put({type: GET_STUDENTS_BY_FILTER_SUCCEED, payload: response.data})
+        const language = lng()
+        console.log(response.data)
+        const updatedStudents = response.data.map((student: any) => {
+            return {...student, isForeign: language === 'ru' && student.isForeign === 1 ? 'да' : language === 'ru' && student.isForeign === 0 ? 'нет'
+            : language === 'en' && student.isForeign === 1 ? 'yes' : language === 'en' && student.isForeign === 0 ? 'no' : ''}
+        } )
+
+        console.log(updatedStudents)
+
+        yield put({type: GET_STUDENTS_BY_FILTER_SUCCEED, payload: updatedStudents})
 
     } catch (err) {
         yield Alert(err.response?.data.errorMessage ?? getErrorInformation(err)  ?? 'Error', 3000, false)
