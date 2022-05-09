@@ -1,7 +1,7 @@
 import Typography from "@material-ui/core/Typography";
 import LeftIcon from "@material-ui/icons/KeyboardArrowLeft";
 import RightIcon from "@material-ui/icons/KeyboardArrowRight";
-import React from "react";
+import React, {useState} from "react";
 import {useCarouselStyles} from './HomeStyles'
 import {useDispatch, useSelector} from "react-redux";
 import {IRootState} from "../../Redux/configureStore";
@@ -27,24 +27,34 @@ export default function HomeCarousel(props: Props) {
     const {t} = useTranslation()
     const dispatch = useDispatch()
     const dormitories: IDormitoryState = useSelector((root: IRootState) => root.dormitories)
-
+    const [watched, setWatched] = useState(2)
     const getAvailablePlacesOfDormitory = (id: number): string =>
         `${t('home.free')} ${getAvailablePlaces(id)} ${t('home.from')} ${allPlaces(id)} ${t('home.places')}`
 
     const getDormitories = (isNext: boolean) => {
-
-        if (isNext  ) {
-            if(nextOrPrev <= dormitories.total - 2){
+        if (isNext) {
+            if (nextOrPrev <= dormitories.total - 2) {
                 dispatch({type: GET_ALL_DORMITORIES, payload: {top: 2, skip: nextOrPrev}})
                 setNextOrPrev(nextOrPrev + dormitories.dormitories.length)
-            }else if(nextOrPrev <= dormitories.total - 1){
+                setWatched(watched+2)
+            } else if (nextOrPrev <= dormitories.total - 1) {
                 dispatch({type: GET_ALL_DORMITORIES, payload: {top: 1, skip: nextOrPrev}})
                 setNextOrPrev(nextOrPrev - 1 + dormitories.dormitories.length)
+                setWatched(watched+1)
             }
 
         } else if (!isNext && nextOrPrev > dormitories.dormitories.length) {
-            dispatch({type: GET_ALL_DORMITORIES, payload: {top: 2, skip: nextOrPrev - 4}})
-            setNextOrPrev(nextOrPrev - dormitories.dormitories.length)
+            if (nextOrPrev >= 0 && nextOrPrev % 2 !== 0) {
+                console.log('nextOrPrev >= 0 && nextOrPrev % 2 !== 0', nextOrPrev >= 0 && nextOrPrev % 2 !== 0)
+                console.log(nextOrPrev)
+                dispatch({type: GET_ALL_DORMITORIES, payload: {top: 2, skip: nextOrPrev - 3}})
+                setNextOrPrev(nextOrPrev - dormitories.dormitories.length)
+                setWatched(watched-1)
+            } else {
+                dispatch({type: GET_ALL_DORMITORIES, payload: {top: 2, skip: nextOrPrev - 4}})
+                setNextOrPrev(nextOrPrev - dormitories.dormitories.length)
+                setWatched(watched-2)
+            }
         }
     }
 
@@ -69,22 +79,16 @@ export default function HomeCarousel(props: Props) {
             <Grid container justifyContent="space-between">
 
                 {dormitories.dormitories[0] !== undefined && dormitories.dormitories.map((dormitory, index) => (
-                    <Paper style={{marginLeft: 'auto', marginRight: 'auto', display: 'block'}}
-                           key={index}
+                    <Paper key={index}
                            className={classes.caruselBlock}
-                           elevation={2}>
+                           elevation={11}>
 
                         <Grid key={dormitory.id}>
                             <Typography variant="h6" color="textPrimary" style={{margin: '10px', textAlign: 'center'}}>
                                 {t('home.dormitoryNumber') + dormitory.number}
                             </Typography>
-                            <Box sx={{
-                                display: 'flex',
-                                flexWrap: 'wrap',
-                                p: 2,
-                                m: 1,
-                                borderRadius: 1
-                            }}>
+
+                            <Box sx={{display: 'flex', flexWrap: 'wrap', p: 2, m: 1, borderRadius: 1}}>
                                 <img onClick={() => props.setProps({id: dormitory.id, open: true})}
                                      style={{marginLeft: 'auto', marginRight: 'auto', display: 'block'}}
                                      className={classes.dormitoryImage}
@@ -92,13 +96,9 @@ export default function HomeCarousel(props: Props) {
                                      width={410} height={402}
                                 />
                                 <div style={{
-                                    width: '412px',
-                                    height: '402px',
-                                    border: 'solid 1px',
-                                    borderRadius: '5px',
-                                    marginLeft: 'auto',
-                                    marginRight: 'auto',
-                                    display: 'block'
+                                    width: '412px', height: '402px',
+                                    border: 'solid 1px', borderRadius: '5px', marginLeft: 'auto',
+                                    marginRight: 'auto', display: 'block'
                                 }}>
                                     <YandexMap withControls={false} location={dormitory.mapImage} isBig={false}/>
                                 </div>
@@ -110,7 +110,7 @@ export default function HomeCarousel(props: Props) {
 
                                     <div style={{display: 'flex'}}>
 
-                                        <Typography  variant="h6" color="textPrimary">
+                                        <Typography variant="h6" color="textPrimary">
                                             {t('home.dormitoryAddress')}
                                         </Typography>
 
@@ -142,8 +142,8 @@ export default function HomeCarousel(props: Props) {
 
                                             <div>
                                                 <ProgressLine
-                                                    completed={Math.trunc( 410 * (   ((allPlaces(dormitory.id) /getAvailablePlaces(dormitory.id) * 100)- 100)) / 100  )}
-                                                    text={`${Math.trunc(allPlaces(dormitory.id) /getAvailablePlaces(dormitory.id) * 100)- 100}%`}
+                                                    completed={Math.trunc(410 * (((allPlaces(dormitory.id) / getAvailablePlaces(dormitory.id) * 100) - 100)) / 100)}
+                                                    text={`${Math.trunc(allPlaces(dormitory.id) / getAvailablePlaces(dormitory.id) * 100) - 100}%`}
                                                     height={10}
                                                     fontSize={'0.575rem'}
                                                     blockMaxWidth={410}
@@ -159,14 +159,14 @@ export default function HomeCarousel(props: Props) {
                 ))}
             </Grid>
             <div className={classes.caruselButtons}>
-                <Typography variant="h6" color="textPrimary" gutterBottom>
+                <Typography variant="h6" color="textPrimary" style={{fontWeight: 600}} gutterBottom>
                     {t('main.total')} {dormitories.total}
                 </Typography>
                 <div className={classes.caruselButtonsIn}>
                     <div className={classes.caruselButtonsIn} onClick={() => getDormitories(false)}>
                         <LeftIcon fontSize={'large'} className={classes.leftRightButton}/>
                     </div>
-                    {dormitories.dormitories.length} / {nextOrPrev}
+                    {watched} / {dormitories.total}
                     <div className={classes.caruselButtonsIn} onClick={() => getDormitories(true)}>
                         <RightIcon fontSize={'large'} className={classes.leftRightButton}/>
                     </div>

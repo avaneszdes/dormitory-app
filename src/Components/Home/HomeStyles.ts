@@ -11,7 +11,8 @@ export const useCarouselStyles = makeStyles(() => ({
     caruselButtonsIn: {
         display: "flex",
         justifyContent: "space-between",
-        alignItems: "center"
+        alignItems: "center",
+        fontWeight: 600
 
     },
     caruselButtons: {
@@ -28,7 +29,7 @@ export const useCarouselStyles = makeStyles(() => ({
     caruselBlock: {
         margin: '40px 20px 20px 20px',
         width: '46.5vw',
-        minHeight: '500px'
+        marginLeft: 'auto', marginRight: 'auto', display: 'block', minHeight: '600px'
     },
     caruselBlockText: {
         padding: '10px 0px 0px 25px',

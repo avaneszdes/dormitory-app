@@ -58,7 +58,7 @@ export default function AddDormitoryDialog(props: Props) {
             const dormitoryRequest = {
                 number: values.dormitoryNumber,
                 quantityFloors: values.dormitoryFloorsQuantity,
-                dormitoryAddress: values.dormitoryCity + ',' + values.dormitoryStreet + ',' + values.dormitoryStreetNumber,
+                address: `${values.dormitoryCity},${values.dormitoryStreet},${values.dormitoryStreetNumber}`,
                 photo: image,
                 mapImage: formik.values.coordinates
             }

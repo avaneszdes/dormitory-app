@@ -29,7 +29,7 @@ import {useFormik} from "formik";
 import {useTranslation} from "react-i18next";
 import {getFullDate, getRole, regexes} from "../Global";
 import * as yup from 'yup'
-import {Box} from "@mui/material";
+import {Box, Paper} from "@mui/material";
 
 
 const Transition = React.forwardRef(function Transition(
@@ -145,7 +145,7 @@ export default function StudentProfile() {
 
     return <Container maxWidth="xl" className={classes.container}>
         <AlertComponent/>
-        <Box sx={{
+        <Paper elevation={18} sx={{
             display: 'flex',
             flexWrap: 'wrap',
             marginBottom: '10px',
@@ -361,7 +361,7 @@ export default function StudentProfile() {
             </Dialog>
 
 
-        </Box>
+        </Paper>
 
     </Container>
 }
@@ -410,7 +410,7 @@ const useStyles = makeStyles(() => (
             width: '510px',
             flexDirection: 'row',
             backgroundColor: '#e6fce8',
-            height: '600px'
+            height: '602px'
         },
         template: {
             width: '700px',
@@ -429,7 +429,7 @@ const useStyles = makeStyles(() => (
             minWidth: '400px',
             maxWidth: '550px',
             backgroundColor: '#d7fddd',
-            height: '600px',
+            height: '602px',
             flexDirection: 'column',
             marginLeft: 'auto',
             marginRight: 'auto',

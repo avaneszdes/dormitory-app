@@ -238,15 +238,18 @@ export default function DetailedInfoDialog({props, setProps}: Props) {
                      <span
                          className={classes.progressLinesTittle}
                      >
-                        {t('detailedInfo.countOfArrears')}
+                        {t('detailedInfo.countOfArrears') + ' за ' + debts?.totalCountDepts + ' месяца'}
                     </span>
                     <ProgressLine
-                        completed={(debts?.totalCountDepts ?? 0) > 10 ? 400 : (debts?.totalCountDepts ?? 0)}
+                        completed={(debts?.totalCountDepts ?? 0) > 10 ? 400 : (debts?.totalCountDepts ?? 0) * 30}
                         text={`${(debts?.totalCountDepts ?? 0)}`}
                         height={40} fontSize={'0.7rem'}
                         blockMaxWidth={400} margin={0}
                     />
 
+                    <span className={classes.progressLinesTittle} style={{marginTop: '20px'}}>
+                        Количество задолженостей в денежном эквиваленте
+                    </span>
                     <div style={{marginTop: '10px'}}>
                         <ProgressLine
                             completed={(debts?.totalSumDepts ?? 0) > 10 ? 400 : (debts?.totalSumDepts ?? 0)}

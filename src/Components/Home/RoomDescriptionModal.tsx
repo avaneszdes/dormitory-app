@@ -98,7 +98,7 @@ export default function RoomDescription({props, setProps}: Props) {
             </Typography>
         </div>
 
-        {role === 'ROLE_ADMINISTRATOR' && Boolean(getOccupanciesByRoomId(room?.id).length) &&
+        {Boolean(getOccupanciesByRoomId(room?.id).length) &&
         <div className={classes.modalItem}>
             <Typography className={classes.modalItemTittle} component="div">
                 {t('roomDescription.logins')}:

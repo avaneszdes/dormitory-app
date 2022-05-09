@@ -59,7 +59,6 @@ const vScheme = yup.object().shape({
     floor: yup.string().required("required"),
     capacity: yup.string().required("required"),
     price: yup.string().required("required"),
-    status: yup.string().required("required"),
 })
 
 const addRoomForm = {
@@ -71,6 +70,7 @@ const addRoomForm = {
 }
 
 export default function DormitoryFloorsModal({props, setProps}: Props) {
+
     const classes = useFloorModalStyles();
     const dispatch = useDispatch()
     const [showAddPopup, setShowAddPopup] = useState(false)
@@ -104,7 +104,7 @@ export default function DormitoryFloorsModal({props, setProps}: Props) {
                 floor: values.floor,
                 capacity: values.capacity,
                 price: values.price,
-                status: values.status
+                status: 'ACTIVE'
 
             }
             dispatch({type: ADD_ROOM_TO_DORMITORY, payload: dto})
@@ -117,7 +117,6 @@ export default function DormitoryFloorsModal({props, setProps}: Props) {
     };
 
     const getUserByLogin = (login: string) => {
-        console.log('error1')
         dispatch({type: GET_STUDENT_PROFILE_BY_LOGIN, payload: login})
     }
 
@@ -243,20 +242,20 @@ export default function DormitoryFloorsModal({props, setProps}: Props) {
                                             helperText={formik.touched.capacity && formik.errors.capacity}
                                         />
                                     </DialogContent>
-                                    <DialogContent>
-                                        <FormControl component="fieldset">
-                                            <FormLabel component="legend">{t('room.optional')}</FormLabel>
-                                            <RadioGroup
-                                                name="status"
-                                                value={formik.values.status}
-                                                onChange={formik.handleChange}
-                                            >
-                                                <FormControlLabel value="ACTIVE" control={<Radio/>} label="Active"/>
-                                                <FormControlLabel value="INACTIVE" control={<Radio color="error"/>}
-                                                                  label="Inactive"/>
-                                            </RadioGroup>
-                                        </FormControl>
-                                    </DialogContent>
+                                    {/*<DialogContent>*/}
+                                    {/*    <FormControl component="fieldset">*/}
+                                    {/*        <FormLabel component="legend">{t('room.optional')}</FormLabel>*/}
+                                    {/*        <RadioGroup*/}
+                                    {/*            name="status"*/}
+                                    {/*            value={formik.values.status}*/}
+                                    {/*            onChange={formik.handleChange}*/}
+                                    {/*        >*/}
+                                    {/*            <FormControlLabel value="ACTIVE" control={<Radio/>} label="Active"/>*/}
+                                    {/*            <FormControlLabel value="INACTIVE" control={<Radio color="error"/>}*/}
+                                    {/*                              label="Inactive"/>*/}
+                                    {/*        </RadioGroup>*/}
+                                    {/*    </FormControl>*/}
+                                    {/*</DialogContent>*/}
                                     <DialogActions>
                                         <Button
                                             type='submit'
