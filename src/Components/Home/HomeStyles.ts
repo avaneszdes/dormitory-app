@@ -29,10 +29,12 @@ export const useCarouselStyles = makeStyles(() => ({
     caruselBlock: {
         margin: '40px 20px 20px 20px',
         width: '46.5vw',
-        marginLeft: 'auto', marginRight: 'auto', display: 'block', minHeight: '600px'
+        marginLeft: 'auto',
+        marginRight: 'auto',
+        display: 'block',
     },
     caruselBlockText: {
-        padding: '10px 0px 0px 25px',
+        padding: '2px 0px 0px 0px',
         maxWidth: '865px',
     },
     dormitoryLocationText: {

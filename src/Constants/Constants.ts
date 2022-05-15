@@ -1,5 +1,5 @@
 export default {
-    host: 'http://localhost:8080/',
+    host: 'https://bntu-dormitory-web-service.herokuapp.com/',
     authorize: 'dormitory-service/v1/authentication/authorize',
     studentProfile: 'dormitory-service/v1/user/findByLogin/',
     studentProfileById: 'dormitory-service/v1/user/',

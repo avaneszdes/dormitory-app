@@ -26,13 +26,11 @@ function* deleteStudentFromRoomWorker(action: DeleteStudentFromRoom) {
         }
         const student: AxiosResponse = yield call(() => httpRequest(studentByLoginRequest));
 
-        console.log(student.data.login)
         const getOccupancyRequest: AxiosRequestConfig = {
             method: 'GET',
             url: `${constants.host}${constants.getOccupancyDataByLogin}${student.data.login}`
         }
         const occupancy: AxiosResponse = yield call(() => httpRequest(getOccupancyRequest));
-        console.log(occupancy.data)
 
         const deleteStudentFromRoomRequest: AxiosRequestConfig = {
             method: 'PUT',
@@ -40,8 +38,6 @@ function* deleteStudentFromRoomWorker(action: DeleteStudentFromRoom) {
         }
 
         const response: AxiosResponse = yield call(() => httpRequest(deleteStudentFromRoomRequest));
-
-        console.log(response)
 
         if (response.status === 200){
             yield put({type: DELETE_STUDENT_FROM_ROOM_SUCCEED, payload: {dormitoryId: action.payload.dormitoryId, roomId: action.payload.roomId}})

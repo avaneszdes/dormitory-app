@@ -5,7 +5,7 @@ import React, {useState} from "react";
 import {useCarouselStyles} from './HomeStyles'
 import {useDispatch, useSelector} from "react-redux";
 import {IRootState} from "../../Redux/configureStore";
-import {Paper} from "@material-ui/core";
+import {Divider, Paper} from "@material-ui/core";
 import Grid from "@material-ui/core/Grid";
 import ProgressLine from "./ProgressLine";
 import {IDormitoryState} from "../../Interfaces";
@@ -45,8 +45,6 @@ export default function HomeCarousel(props: Props) {
 
         } else if (!isNext && nextOrPrev > dormitories.dormitories.length) {
             if (nextOrPrev >= 0 && nextOrPrev % 2 !== 0) {
-                console.log('nextOrPrev >= 0 && nextOrPrev % 2 !== 0', nextOrPrev >= 0 && nextOrPrev % 2 !== 0)
-                console.log(nextOrPrev)
                 dispatch({type: GET_ALL_DORMITORIES, payload: {top: 2, skip: nextOrPrev - 3}})
                 setNextOrPrev(nextOrPrev - dormitories.dormitories.length)
                 setWatched(watched-1)
@@ -90,7 +88,7 @@ export default function HomeCarousel(props: Props) {
 
                             <Box sx={{display: 'flex', flexWrap: 'wrap', p: 2, m: 1, borderRadius: 1}}>
                                 <img onClick={() => props.setProps({id: dormitory.id, open: true})}
-                                     style={{marginLeft: 'auto', marginRight: 'auto', display: 'block'}}
+                                     style={{marginLeft: 'auto', marginRight: 'auto', display: 'block', borderRadius: '7px'}}
                                      className={classes.dormitoryImage}
                                      alt={'img'} src={dormitory?.photo ?? altImage}
                                      width={410} height={402}
@@ -107,31 +105,25 @@ export default function HomeCarousel(props: Props) {
 
                                 {dormitory.address &&
                                 <div className={classes.caruselBlockText}>
-
-                                    <div style={{display: 'flex'}}>
-
-                                        <Typography variant="h6" color="textPrimary">
-                                            {t('home.dormitoryAddress')}
-                                        </Typography>
-
-                                        <Typography style={{marginLeft: '8px'}} variant="h6" color="textPrimary">
-                                            {dormitory.address.split(',')[0]},
-                                        </Typography>
-                                        <Typography style={{marginLeft: '4px'}} variant="h6" color="textPrimary">
-                                            {dormitory.address.split(',')[1]}
-                                        </Typography>
-                                        <Typography style={{marginLeft: '4px'}} variant="h6" color="textPrimary">
-                                            {dormitory.address.split(',')[2]}
+                                    <div>
+                                        <Typography style={{textAlign: 'center'}} variant="h6" color="textPrimary">
+                                            {
+                                                dormitory.address.split(',')[1]
+                                            + ' '
+                                            + dormitory.address.split(',')[2]
+                                            + ', '
+                                            + dormitory.address.split(',')[0]
+                                            }
                                         </Typography>
                                     </div>
-
+                                    <Divider component="li" style={{margin: '5px 0px 0px 25px'}} />
                                     {Boolean(dormitory.rooms.length) &&
-                                    <div style={{marginBottom: "30px"}}>
+                                    <div >
 
                                         <Box sx={{
                                             display: 'flex',
                                             flexWrap: 'wrap',
-                                            marginBottom: '10px',
+                                            margin: '10px 0px 25px 30px',
                                             justifyContent: "space-between",
                                         }}>
                                             <div style={{width: '300px'}}>
@@ -140,7 +132,7 @@ export default function HomeCarousel(props: Props) {
                                                 </Typography>
                                             </div>
 
-                                            <div>
+                                            <div style={{marginTop: '5px'}}>
                                                 <ProgressLine
                                                     completed={Math.trunc(410 * (((allPlaces(dormitory.id) / getAvailablePlaces(dormitory.id) * 100) - 100)) / 100)}
                                                     text={`${Math.trunc(allPlaces(dormitory.id) / getAvailablePlaces(dormitory.id) * 100) - 100}%`}

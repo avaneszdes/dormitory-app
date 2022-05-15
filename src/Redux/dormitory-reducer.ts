@@ -1,4 +1,4 @@
-import {
+﻿import {
     ADD_DORMITORY_SUCCEED,
     ADD_ROOM_TO_DORMITORY_SUCCEED,
     ADD_STUDENT_TO_ROOM_SUCCEED,
@@ -56,6 +56,7 @@ const dormitories = (state = initialState, action: DormitoryActionTypes) => {
             return {...state.dormitories, dormitories: state.dormitories.filter(x => x.id !== action.payload)}
 
         case UPDATE_DORMITORY_SUCCEED:
+            console.log('update', action.payload)
             return {
                 ...state.dormitories, dormitories: state.dormitories.map(dormitory => {
                     if (dormitory.id === action.payload.id) {

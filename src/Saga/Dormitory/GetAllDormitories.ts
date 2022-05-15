@@ -23,7 +23,9 @@ function* getAllDormitoriesWorker(action: GetAllDormitories) {
     }
 
     try {
-        const response: AxiosResponse = yield call(() => httpRequest(request));
+        const response: AxiosResponse = yield call(() => httpRequest(request))
+        console.log('get', response.data)
+
         yield put({type: GET_ALL_DORMITORIES_SUCCEED, payload: response.data})
     }catch (err) {
         const er = err as AxiosError

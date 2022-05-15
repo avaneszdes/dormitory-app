@@ -36,13 +36,10 @@ function* getStudentsByFilterWorker(action: GetStudentsByDormitory) {
     try {
         const response: AxiosResponse = yield call(() => httpRequest(request));
         const language = lng()
-        console.log(response.data)
         const updatedStudents = response.data.map((student: any) => {
             return {...student, isForeign: language === 'ru' && student.isForeign === 1 ? 'да' : language === 'ru' && student.isForeign === 0 ? 'нет'
             : language === 'en' && student.isForeign === 1 ? 'yes' : language === 'en' && student.isForeign === 0 ? 'no' : ''}
         } )
-
-        console.log(updatedStudents)
 
         yield put({type: GET_STUDENTS_BY_FILTER_SUCCEED, payload: updatedStudents})
 

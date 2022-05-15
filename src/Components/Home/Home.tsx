@@ -1,4 +1,4 @@
-﻿import React, {useEffect, useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Typography from '@material-ui/core/Typography';
 import bntuRu from '../../images/bntu-ru.png'
@@ -49,7 +49,7 @@ export default function Home() {
     }, []);
 
     function getWindowDimensions() {
-        const { innerWidth: width, innerHeight: height } = window;
+        const {innerWidth: width, innerHeight: height} = window;
         return {
             width,
             height
@@ -69,15 +69,23 @@ export default function Home() {
                     width: '100%',
                     marginTop: `${windowDimensions.height > 1300 ? '78px' : '58px'}`,
                     height: `${windowDimensions.height > 1300 ? '400px' : '550px'}`
-                }}
+                     }}
                      alt={'img'}
                      src={bntuImage}/>
                 {dormitory?.dormitories.length > 0 && <HomeCarousel setProps={setProps}/>}
             </div>}
 
             <iframe
-                style={{borderRadius: '50px', marginTop: '80px', marginLeft: 'auto', marginRight: 'auto', display: 'block', width: "60vw", marginBottom: "80px"}}
-                 height="545"
+                style={{
+                    borderRadius: '50px',
+                    marginTop: '80px',
+                    marginLeft: 'auto',
+                    marginRight: 'auto',
+                    display: 'block',
+                    width: "60vw",
+                    marginBottom: "80px"
+                }}
+                height="545"
                 src="https://www.youtube-nocookie.com/embed/aQoKw05bhpo"
                 title={"BNTU Video"}
                 frameBorder="0"

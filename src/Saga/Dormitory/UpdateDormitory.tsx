@@ -22,6 +22,7 @@ function* updateDormitoryWorker(action: UpdateDormitory) {
     }
     try {
         const response: AxiosResponse = yield call(() => httpRequest(request))
+
         yield put({type: UPDATE_DORMITORY_SUCCEED, payload: response.data})
         yield Alert("Dormitory successfully updated", 3000, true)
 
