@@ -12,12 +12,14 @@ import AlertComponent from "../Alerts/SuccessAlert";
 import CustomToolbar from "./CustomToolbar";
 import DataGridColumns from "./DataGridColumns";
 import {lng} from "../Global";
+import Loading from '../Loading/Loading';
 
 export default function DataGridComponent() {
 
     const dispatch = useDispatch()
     const auth = useSelector((authState: IRootState) => authState.auth)
     const students = useSelector((profile: IRootState) => profile.student.students)
+    const loading = useSelector((loader: IRootState) => loader.alert.loading)
 
     const tokenLife = auth.exp !== undefined ? auth.exp * 1000 : 0;
     const language = lng()
@@ -35,6 +37,7 @@ export default function DataGridComponent() {
 
     return (
         <div style={{width: '99%', marginLeft: '10px'}}>
+            <Loading hidden={loading}/>
             <AlertComponent/>
             <div style={{height: 750, maxWidth: '100%', marginTop: '20px'}}>
                 <DataGrid

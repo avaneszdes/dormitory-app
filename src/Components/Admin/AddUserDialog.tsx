@@ -66,6 +66,7 @@ export default function AddUserDialog(props: Props) {
     }
 
     const handleRoleClose = (role: string) => {
+        console.log(role)
         setVal({...val, role: role})
         setRoleAnchorEl(null);
     }
@@ -249,9 +250,10 @@ export default function AddUserDialog(props: Props) {
                             'aria-labelledby': 'basic-button',
                         }}
                     >
-                        <MenuItem onClick={() => handleRoleClose('Student')}>{getRole('Student')}</MenuItem>
-                        <MenuItem onClick={() => handleRoleClose('Accountant')}>{getRole('Accountant')}</MenuItem>
-                        <MenuItem onClick={() => handleRoleClose('Administrator')}>{getRole('Administrator')}</MenuItem>
+                        <MenuItem onClick={() => handleRoleClose('student')}>{getRole('Student')}</MenuItem>
+                        <MenuItem onClick={() => handleRoleClose('accountant')}>{getRole('Accountant')}</MenuItem>
+                        <MenuItem onClick={() => handleRoleClose('administrator')}>{getRole('Administrator')}</MenuItem>
+                        <MenuItem onClick={() => handleRoleClose('dean')}>{getRole('Dean')}</MenuItem>
                     </Menu>
                 </div>
 

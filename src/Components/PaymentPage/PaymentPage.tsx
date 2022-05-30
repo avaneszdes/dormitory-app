@@ -68,7 +68,6 @@ function PaymentPage(state: any) {
                     >
                         <MenuItem onClick={() => handleMenuClose((yearNow - 1).toString())}>{yearNow - 1}</MenuItem>
                         <MenuItem onClick={() => handleMenuClose(yearNow.toString())}>{yearNow}</MenuItem>
-                        <MenuItem onClick={() => handleMenuClose((yearNow + 1).toString())}>{yearNow + 1}</MenuItem>
                     </Menu>
                 </div>
                     {payments.length === 0 &&

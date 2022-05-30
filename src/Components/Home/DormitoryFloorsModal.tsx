@@ -261,13 +261,13 @@ export default function DormitoryFloorsModal({props, setProps}: Props) {
                                             type='submit'
                                             color='primary'
                                         >
-                                            Add
+                                            {t('room.create')}
                                         </Button>
                                         <Button
                                             onClick={() => setShowAddPopup(false)}
                                             color='primary'
                                         >
-                                            Cancel
+                                            {t('room.cancel')}
                                         </Button>
                                     </DialogActions>
                                 </form>
@@ -295,13 +295,13 @@ export default function DormitoryFloorsModal({props, setProps}: Props) {
                                         color='primary'
                                         onClick={() => removeRoom(dormitory && dormitory.id)}
                                     >
-                                        Remove
+                                        {t('room.remove')}
                                     </Button>
                                     <Button
                                         onClick={() => setShowRemovePopup(false)}
                                         color='primary'
                                     >
-                                        Cancel
+                                        {t('room.cancel')}
                                     </Button>
                                 </DialogActions>
                             </Dialog>
@@ -397,7 +397,6 @@ export default function DormitoryFloorsModal({props, setProps}: Props) {
                                                 </div>
                                         })}
                                     </div>
-
                                 </div>
                             }
                         })}

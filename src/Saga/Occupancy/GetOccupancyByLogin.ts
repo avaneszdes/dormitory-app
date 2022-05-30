@@ -1,6 +1,6 @@
 import {GetOccupancyDataByLogin} from "../../Redux/action";
 import {call, put, takeLatest} from "redux-saga/effects";
-import {AxiosError, AxiosRequestConfig, AxiosResponse} from "axios";
+import {AxiosRequestConfig, AxiosResponse} from "axios";
 import {
     GET_OCCUPANCY_DATA_BY_LOGIN,
     GET_OCCUPANCY_DATA_BY_LOGIN_SUCCEED,
@@ -10,7 +10,6 @@ import {
 import httpRequest from "../httpConfig";
 import constants from '../../Constants/Constants'
 import {Alert} from "../Utils/SetAlert";
-import history from "../../Components/history";
 import {getErrorInformation} from "../../Components/Global";
 import {RoomInterface} from "../../Interfaces";
 

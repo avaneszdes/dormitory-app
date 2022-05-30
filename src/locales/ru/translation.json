@@ -36,7 +36,12 @@
     "changePassword": "Изменить пароль",
     "updateData": "Изменить пользовательские данные",
     "updatePhoto": "Изменить фото",
-    "occupationHeader": "ИНФОРМАЦИЯ О ПРОЖИВАНИИ"
+    "occupationHeader": "ИНФОРМАЦИЯ О ПРОЖИВАНИИ",
+    "writeYourEmail": "Впишите свою почту",
+    "phoneNumber": "Номер телефона",
+    "updateUserData": "Обновление пользовательских данных",
+    "update": "Обновить",
+    "cancel": "Отмена"
   },
   "authorization": {
     "login": "login",
@@ -153,7 +158,10 @@
     "create": "Создать",
     "reprimandCommentBody": "Напишите коментарий для выговора",
     "reprimandTitle": "Создание выговора",
-    "countOfArrears": "Количество задолженностей"
+    "countOfArrears": "Количество задолженностей",
+    "month": "месяцев",
+    "for": "за",
+    "moneyDebts": "Количество задолженостей в денежном эквиваленте"
   },
   "eripForm": {
     "headerText": "Здесь вы можете оплатить за проживание в общежитии",
@@ -172,7 +180,10 @@
     "capacity": "Вмещаемость",
     "optional": "Опцианально",
     "removeRoomText": "Удалить комнату с общежития №",
-    "addRoomText": "Добавить комнату в общежитие №"
+    "addRoomText": "Добавить комнату в общежитие №",
+    "create": "Создать",
+    "remove": "Удалить",
+    "cancel": "Отмена"
   },
   "addUserForm": {
     "name": "Имя",

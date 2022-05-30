@@ -143,7 +143,7 @@ export default function Main() {
 
                     {auth.token && auth.role === 'ROLE_ADMINISTRATOR' && <Divider orientation="vertical" flexItem sx={{height: '20px', margin: '20px 0px 0px 10px'}} />}
                     {auth.token && auth.role === 'ROLE_ADMINISTRATOR' &&
-                    <h5 className="fromLeft" onClick={() => history.push('/adminPage')}>
+                    <h5 id={'logIn'} className="fromLeft" onClick={() => history.push('/adminPage')}>
                         {t('main.admin')}
                     </h5>
                     }

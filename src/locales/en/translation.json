@@ -29,7 +29,12 @@
     "changePassword": "Change password",
     "updateData": "Update user`s data",
     "updatePhoto": "Change photo",
-    "occupationHeader": "ACCOMMODATION INFORMATION"
+    "occupationHeader": "ACCOMMODATION INFORMATION",
+    "writeYourEmail": "Write your mail",
+    "phoneNumber": "Phone number",
+    "updateUserData": "Update user`s data",
+    "update": "Update",
+    "cancel": "Cancel"
   },
   "registration": {
     "firstName": "First Name",
@@ -156,7 +161,10 @@
     "create": "Create",
     "reprimandCommentBody": "Write reprimand comment in here",
     "reprimandTitle": "Creating reprimand",
-    "countOfArrears": "Count of Arrears"
+    "countOfArrears": "Count of Arrears",
+    "for": "for",
+    "month": "month",
+    "moneyDebts": "The number of debts in monetary terms"
   },
   "eripForm": {
     "headerText": "You can pay for living in here",
@@ -175,7 +183,10 @@
     "capacity": "Capacity",
     "optional": "Optional",
     "removeRoomText": "Delete room from dormitory",
-    "addRoomText": "Create room for dormitory"
+    "addRoomText": "Create room for dormitory",
+    "create": "Create",
+    "remove": "remove",
+    "cancel": "Cancel"
   },
   "addUserForm": {
     "name" : "Name",

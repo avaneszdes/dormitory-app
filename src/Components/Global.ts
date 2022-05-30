@@ -42,6 +42,10 @@ export const getRole = (role: string): string => {
         return 'БУХГАЛТЕР'
     }else if(role === 'Accountant' &&  lang === 'en'){
         return 'ACCOUNTANT'
+    } else if(role === 'Dean' &&  lang === 'en'){
+        return 'DEAN'
+    } else if(role === 'Dean' &&  lang === 'ru'){
+        return 'ДЕКАН'
     }
 
     return ''

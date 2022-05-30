@@ -205,13 +205,14 @@ export default function CustomToolbar() {
 
                 <Divider style={{margin: '0px 3px 0 3px'}} variant={'fullWidth'} flexItem orientation={'vertical'}/>
 
-                {Boolean(filter.dormitory || filter.faculty || filter.group || filter.foreign) &&
-                <IconButton style={{backgroundColor: '#a4dca2', marginLeft: '6px', marginRight: '6px'}}
-                            color={'warning'} onClick={doFilter}>
-                    <FilterAltIcon fontSize={'small'}/>
-                </IconButton>
-                }
-                <Divider style={{margin: '0px 3px 0 3px'}} variant={'fullWidth'} flexItem orientation={'vertical'}/>
+                {Boolean(filter.dormitory || filter.faculty || filter.group || filter.foreign) && <div>
+                    <IconButton style={{backgroundColor: '#a4dca2', marginLeft: '6px', marginRight: '6px'}}
+                                color={'warning'} onClick={doFilter}>
+                        <FilterAltIcon fontSize={'small'}/>
+                    </IconButton>
+                    <Divider style={{margin: '0px 3px 0 3px'}} variant={'fullWidth'} flexItem orientation={'vertical'}/>
+                </div>}
+
             </div>
 
             <GridToolbarColumnsButton/>

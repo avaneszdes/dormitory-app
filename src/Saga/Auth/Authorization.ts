@@ -20,6 +20,8 @@ export interface ResponseJwt extends JwtPayload {
 }
 
 function* authorizationWorker(action: AuthorizationAction) {
+
+
     yield put({type: LOADING_START_SUCCEED, payload: true})
 
     const getTokenHttpConfig: AxiosRequestConfig = {

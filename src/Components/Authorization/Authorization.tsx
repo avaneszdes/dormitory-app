@@ -17,6 +17,7 @@ import {AuthenticationDto} from "../../Interfaces";
 import AlertComponent from "../Alerts/SuccessAlert";
 import {IRootState} from "../../Redux/configureStore";
 import {regexes} from "../Global";
+import Loading from '../Loading/Loading';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -50,6 +51,7 @@ export default function SignIn() {
     const classes = useStyles()
     const dispatch = useDispatch()
     const exp = useSelector((profile: IRootState) => profile.auth.exp)
+    const loading = useSelector((x: IRootState) => x.alert.loading)
     const initValues: AuthenticationDto = {
         login: '',
         password: ''
@@ -77,6 +79,7 @@ export default function SignIn() {
     return (
         <Container component="main" maxWidth="xs" style={{marginTop: '70px'}}>
             <AlertComponent/>
+            <Loading hidden={loading}/>
             <div className={classes.paper}>
                 <Avatar className={classes.avatar}>
                     <LockOutlinedIcon/>

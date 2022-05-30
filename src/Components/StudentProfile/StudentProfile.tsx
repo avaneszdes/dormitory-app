@@ -29,7 +29,8 @@ import {useFormik} from "formik";
 import {useTranslation} from "react-i18next";
 import {getFullDate, getRole, regexes} from "../Global";
 import * as yup from 'yup'
-import {Box, Paper} from "@mui/material";
+import {Paper} from "@mui/material";
+import Loading from "../Loading/Loading";
 
 
 const Transition = React.forwardRef(function Transition(
@@ -41,7 +42,7 @@ const Transition = React.forwardRef(function Transition(
 
 const {phoneRegExp} = regexes
 const vScheme = yup.object().shape({
-    phone: yup.string().required("required")
+    phone: yup.string()
         .matches(new RegExp(phoneRegExp), 'Phone number is not valid')
         .min(9, "To short")
         .max(13, "To long"),
@@ -76,17 +77,14 @@ export default function StudentProfile() {
     const occupancy = useSelector((rootState: IRootState) => rootState.occupancy.occupancy)
     const {t} = useTranslation();
     const profile = useSelector((profile: IRootState) => profile.student.profile)
+    const loading: boolean = useSelector((state: IRootState) => state.alert.loading)
 
     useEffect(() => {
         dispatch({type: GET_STUDENT_PROFILE_BY_ID, payload: auth.id})
-
         if(auth.role === 'ROLE_STUDENT'){
             dispatch({type: GET_OCCUPANCY_DATA_BY_LOGIN, payload: auth.login})
         }
-
     }, []);
-
-
 
     const val = {
         phone: '',
@@ -144,6 +142,7 @@ export default function StudentProfile() {
     const role = auth.role ? auth.role?.substr(5, auth.role.length)[0].concat(auth.role?.substr(6, auth.role.length).toLocaleLowerCase()) : ''
 
     return <Container maxWidth="xl" className={classes.container}>
+        <Loading hidden={loading}/>
         <AlertComponent/>
         <Paper elevation={18} sx={{
             display: 'flex',
@@ -314,14 +313,14 @@ export default function StudentProfile() {
                     onClose={handleClose}
                     aria-labelledby="form-title"
             >
-                <DialogTitle id="form-title">Update user`s data</DialogTitle>
+                <DialogTitle id="form-title">{t('studentProfile.updateUserData')}</DialogTitle>
                 <form onSubmit={formik.handleSubmit}>
                     <DialogContent>
                         <TextField
-                            placeholder="Write your email"
+                            placeholder={t('studentProfile.writeYourEmail')}
                             name='mail'
                             id='mailId'
-                            label="Email address"
+                            label={t('studentProfile.writeYourEmail')}
                             style={{width: '400px'}}
                             onChange={formik.handleChange}
                             error={formik.touched.mail && Boolean(formik.errors.mail)}
@@ -331,8 +330,8 @@ export default function StudentProfile() {
                     </DialogContent>
                     <DialogContent>
                         <TextField
-                            placeholder="Write your phone number"
-                            label="Phone number"
+                            placeholder={t('studentProfile.phoneNumber')}
+                            label={t('studentProfile.phoneNumber')}
                             name='phone'
                             id='phoneId'
                             style={{width: '400px'}}
@@ -348,13 +347,13 @@ export default function StudentProfile() {
                             type='submit'
                             color='primary'
                         >
-                            Update
+                            {t('studentProfile.update')}
                         </Button>
                         <Button
                             onClick={handleClose}
                             color='primary'
                         >
-                            Cancel
+                            {t('studentProfile.cancel')}
                         </Button>
                     </DialogActions>
                 </form>

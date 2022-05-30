@@ -198,7 +198,7 @@ export default function DetailedInfoDialog({props, setProps}: Props) {
                         </div>
                         <div className={classes.desInfoOccupancyBlockItem}>
                             <h3 style={{fontWeight: 100}}>{t('detailedInfo.price')}: </h3>
-                            <h2 style={{marginLeft: '15px'}}>{occupancy.price}</h2>
+                            <h2 style={{marginLeft: '15px'}}>{occupancy.price}Br</h2>
                         </div>
 
                         <div className={classes.desInfoOccupancyBlockItem}>
@@ -238,7 +238,7 @@ export default function DetailedInfoDialog({props, setProps}: Props) {
                      <span
                          className={classes.progressLinesTittle}
                      >
-                        {t('detailedInfo.countOfArrears') + ' за ' + debts?.totalCountDepts + ' месяца'}
+                        {t('detailedInfo.countOfArrears')+ ' ' + t('detailedInfo.for') + ' ' + debts?.totalCountDepts + ' ' +t('detailedInfo.month')}
                     </span>
                     <ProgressLine
                         completed={(debts?.totalCountDepts ?? 0) > 10 ? 400 : (debts?.totalCountDepts ?? 0) * 30}
@@ -248,7 +248,7 @@ export default function DetailedInfoDialog({props, setProps}: Props) {
                     />
 
                     <span className={classes.progressLinesTittle} style={{marginTop: '20px'}}>
-                        Количество задолженостей в денежном эквиваленте
+                        {t('detailedInfo.moneyDebts')}
                     </span>
                     <div style={{marginTop: '10px'}}>
                         <ProgressLine
